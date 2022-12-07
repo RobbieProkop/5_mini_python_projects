@@ -1,32 +1,30 @@
-
-
-print('Welcome to the quiz!')
+import random
 
 lives = 3
 
 questionList = [
   {
-    "qestion": "What's the capital of Russia? ",
+    "question": "What's the capital of Russia? ",
     'answer' : 'moscow',
     'lecture': 'You should brush up on your geography'
   },
   {
-    "qestion": 'What is the current world population (in billions)? ',
+    "question": 'What is the current world population (in billions)? ',
     'answer' : '8',
     'lecture': 'We reached 8 billion in 2022'
   },
   {
-    "qestion": "Who was the first man to walk on the moon? ",
+    "question": "Who was the first man to walk on the moon? ",
     'answer' : 'neil armstrong',
     'lecture': 'Mr. Armstrong said "This is one small step for a man, one giant leap for mankind" after stepping on the moon in July of 1969'
   },
   {
-    "qestion": "What is the national sport of Canada? ",
+    "question": "What is the national sport of Canada? ",
     'answer' : 'lacrosse',
     'lecture': 'I bet you thought it was hockey!'
   },
   {
-    "qestion": "Who discovered gravity (First and last name)? ",
+    "question": "Who discovered gravity (First and last name)? ",
     'answer' : 'isaac newton',
     'lecture': 'Come on! Maybe you need to go back to elementary.'
   },
@@ -41,35 +39,55 @@ def check_lives():
   exit()
 
 def random_question():
-  
+  currentDict = random.choice(questionList)
+  qStr = currentDict['question']
+  answer = currentDict['answer']
+  lecture =  currentDict['lecture']
+  return [qStr, answer, lecture]
 
-def question(qStr, answer, lecture):
-  q = input(qStr)
-  if q.lower() != answer:
-    print(f'Sorry, the correct answer was {answer}.')
-    print(lecture)
+def question():
+  current = random_question()
+  q = input(current[0])
+  if q.lower() != current[1]:
+    print(f'Sorry, the correct answer was {current[1]}.')
+    print(current[2])
     global lives
     lives -= 1
     check_lives()
   else:
     print('Correct!')
-    print("Next Question: ")
-    
+    print("Next Question: ") 
+
+
+print('Welcome to the quiz!')
+
+print()
 
 print("Rules: Please write all of your answers in lowecase, otherwise they will be considered incorrect")
-playing = input("Would you like to play? ")
 
+print()
+
+playing = input("Would you like to play? ")
 
 if playing.lower() != "yes":
   print("Come back when you want to play")
   exit()
 
-
 print("Let's play")
 
-# first question
-question("What's the capital of Russia? ", 'moscow', 'You should brush up on your geography')
+print()
+
+
+# 1st question
+question()
   
 #  2nd question
-question("What is the current world population (in billions)? ", "8", 'We reached 8 billion in 2022')
+question()
 
+# 3rd question
+question()
+  
+#  4th question
+question()
+
+print("Congratulation, you won the game!")
