@@ -41,7 +41,7 @@ questionList = [
   {
     "question": "How many bones are there in the human body? ",
     'answer' : '206',
-    'lecture': 'That\' a lot of bones.'
+    'lecture': 'That\'s a lot of bones.'
   },
 ]
 
