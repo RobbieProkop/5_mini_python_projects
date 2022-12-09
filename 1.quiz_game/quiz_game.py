@@ -46,13 +46,11 @@ questionList = [
 ]
 
 def check_lives():
-  if (lives != 0) and (lives > 1):
+  if lives > 1:
     print(f'You have {lives} lives remaining')
-    print("Next Question: ")
     return print()
   if lives == 1:
     print(f'You have {lives} life remaining')
-    print("Next Question: ")
     return print()
   
   print("You are out of lives. Game over!")
@@ -77,8 +75,7 @@ def question():
     lives -= 1
     check_lives()
   else:
-    print('Correct!')
-    print("Next Question: ") 
+    print('Correct!') 
     print()
 
 
@@ -105,12 +102,15 @@ print()
 
 # 1st question
 question()
+print("Next Question: ")
   
 #  2nd question
 question()
+print("Next Question: ")
 
 # 3rd question
 question()
+print("Next Question: ")
   
 #  4th question
 question()
