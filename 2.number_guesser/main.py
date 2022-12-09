@@ -29,13 +29,6 @@ while True:
     print(f'The number is less than {guess}')
   else:
     print(f'The number is greater than {guess}')
-    
-  
-  # else: 
-  #   print(f"Nope, not {guess}. Try again")
-    
-    
-# print('You got it in', numOfGuess, 'guesses')
 
 # Game Using A Function
 
