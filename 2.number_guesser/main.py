@@ -2,11 +2,12 @@ import random
 
 
 a = 1
-b = 100
+b = 1000
+
 
 r = random.randint(a, b)
 
-numOfGuess = 0
+numOfGuess = 8
 
 guess= ""
 
@@ -15,6 +16,9 @@ def guess_again():
   global numOfGuess
   guess = input(f"Guess a number between {a} and {b}: ")
   
+  if numOfGuess == 0:
+    print(f"You lose. The correct number was {r}")
+    quit() 
   if not guess.isdigit():
     print("Invalid entry")
     guess_again()
@@ -24,19 +28,18 @@ def guess_again():
     guess_again()
   if guess > r:
     print(f"the number is less than {guess}")
-    numOfGuess += 1
-    print("first ",numOfGuess)
+    numOfGuess -= 1
+
     guess_again()
 
   if guess < r:
     print(f"the number is greater than {guess}")
-    numOfGuess += 1
-    print("second ",numOfGuess)
+    numOfGuess -= 1
+    
     guess_again()
 
   if guess == r:
-    numOfGuess += 1
-    print(f'Congratulations! You guessed the number with {numOfGuess} guesses')
+    print(f'Congratulations! You guessed the number with {numOfGuess} guesses remaining')
     quit()
   
 guess_again()
