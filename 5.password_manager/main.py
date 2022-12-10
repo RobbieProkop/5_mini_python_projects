@@ -3,14 +3,20 @@
 master = input("What is your master password? ")
 
 def view():
-  pass
+  with open('passowrds.txt', 'r') as f:
+    for line in f.readlines():
+      # rstrip removes the line break
+      data = line.rstrip()
+      user, passw = data.split('|')
+      print('User:', user, 'Password:', passw)
 
 def add():
   name = input("account Name: ")
   password = input("Password: ")
   
   with open('passowrds.txt', 'a') as f:
-    f.write(name + " | " + password)
+    f.write(name + "|" + password + '\n')
+    
     
     
 
