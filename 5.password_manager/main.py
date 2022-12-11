@@ -16,8 +16,10 @@ def load_key():
   file.close()
   return key
 
-key = load_key()
 master = input("What is your master password? ")
+# currently master password does nothing. 
+key = load_key()
+fer = Fernet(key)
 
 def view():
   with open('passowrds.txt', 'r') as f:
@@ -25,17 +27,15 @@ def view():
       # rstrip removes the line break
       data = line.rstrip()
       user, passw = data.split('|')
-      print('User:', user, 'Password:', passw)
+      print('User:', user, 'Password:', fer.decrypt(passw.encode()).decode())
 
 def add():
   name = input("account Name: ")
   password = input("Password: ")
   
   with open('passowrds.txt', 'a') as f:
-    f.write(name + "|" + password + '\n')
-    
-    
-    
+    f.write(name + "|" + fer.encrypt(password.encode()).decode() + '\n')
+       
 
 while True:
   mode = input('Would you like to add a new password, or view an existing one? (Type "add", "view", or "Q") ').lower()
