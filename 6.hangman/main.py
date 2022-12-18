@@ -31,9 +31,11 @@ def hangman():
   word_letters = set(word.upper()) # letters in the word
   alphabet = set(string.ascii_uppercase)
   guessed_letters = set() # what the user has guessed
+  
+  lives = 7
 
   # getting user input
-  while len(word_letters) > 0:
+  while len(word_letters) > 0 and lives > 0:
     # letters used
     print('You have guessed: ', ' '.join(guessed_letters))
     
@@ -46,12 +48,19 @@ def hangman():
       guessed_letters.add(user_letter)
       if user_letter in word_letters:
         word_letters.remove(user_letter)
+      else:
+        lives -= 1
+        print(f'Wrong guess. You have {lives} lives remaining')
     elif user_letter in guessed_letters:
       print(f"You've already guessed {user_letter}")
     else:
       print("Invalid character")
       
-  #  once word letters length is completed
+  #  once word letters length is completed or lives are at 0
+  if lives == 0:
+    print(f"Game over. The word was: {word}")
+  else: 
+    print(f"Great job, you guessed the word, {word}!")
   
     
     
