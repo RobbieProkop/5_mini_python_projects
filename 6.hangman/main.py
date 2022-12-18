@@ -24,24 +24,35 @@ def get_valid_word(words):
   word = random.choice(words)
   while '-' in word or ' ' in word: #checking to make sure word does not contain - or space
     word = random.choice(words)
-  return word
+  return word.upper() # must be upper case to match the uppercase guesses
 
 def hangman():
   word = get_valid_word(words)
-  word_letters = set(word) # letters in the word
+  word_letters = set(word.upper()) # letters in the word
   alphabet = set(string.ascii_uppercase)
   guessed_letters = set() # what the user has guessed
 
   # getting user input
-  user_letter = input("Guess a letter: ").upper()
-  if user_letter in alphabet - guessed_letters:
-    guessed_letters.add(user_letter)
-    if user_letter in word_letters:
-      word_letters.remove(user_letter)
-  elif user_letter in guessed_letters:
-    print(f"You've already guessed {user_letter}")
-  else:
-    print("Invalid character")
+  while len(word_letters) > 0:
+    # letters used
+    print('You have guessed: ', ' '.join(guessed_letters))
+    
+    #  what correct letters have been guessed
+    word_list = [letter if letter in guessed_letters else '-' for letter in word]
+    print('Current word: ', ' '.join(word_list))
+    user_letter = input("Guess a letter: ").upper()
+    print()
+    if user_letter in alphabet - guessed_letters:
+      guessed_letters.add(user_letter)
+      if user_letter in word_letters:
+        word_letters.remove(user_letter)
+    elif user_letter in guessed_letters:
+      print(f"You've already guessed {user_letter}")
+    else:
+      print("Invalid character")
+      
+  #  once word letters length is completed
+  
     
     
 hangman()
