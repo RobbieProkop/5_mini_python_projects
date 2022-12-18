@@ -15,4 +15,13 @@ class TicTacToe:
     for row in number_board:
       print('| ' + ' | '.join(row) + ' |')
       
-  
+  def available_moves(self):
+    #  list comprehension way
+    return [i for i, spot in enumerate(self.board) if spot == " "]
+    # one way to write this (long way)
+    # moves = []
+    # for (i, spot) in enumerate(self.board):
+    #   # ['x', 'x', 'o'] ---> [(0, 'x'), (1, 'x'), (2, 'o')]
+    #   if spot == " ":
+    #     moves.append(i)
+    # return moves
