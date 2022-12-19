@@ -9,7 +9,7 @@ class Player:
     def get_move(self, game):
       pass
     
-class RondomComputer(Player):
+class RandomComputer(Player):
   def __init__(self, letter):
     super().__init__(letter)
 
@@ -25,7 +25,7 @@ class HumanPlayer(Player):
     valid_square = False
     val = None
     while not valid_square:
-      square = input(self.letter + '\'s turn. Input move (0-9): ')
+      square = input(self.letter + '\'s turn. Input move (0-8): ')
       # check the validity of the spot. Is it taken? Is it a real spot?
       
       try:
